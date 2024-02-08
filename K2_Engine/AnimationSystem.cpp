@@ -8,6 +8,8 @@ AnimationSystem::~AnimationSystem()
 {
 }
 
+
+//Function to update the animation
 void AnimationSystem::Update(float dt)
 {
 	for (Animation* anim : m_animations)
@@ -23,6 +25,7 @@ void AnimationSystem::Update(float dt)
 		//time += dt;
 
 		cMesh* affectedMesh = anim->mesh;
+
 #pragma region POSITION
 		// Position
 		if (anim->positionKeyFrames.size() == 1)
@@ -200,6 +203,7 @@ void AnimationSystem::Update(float dt)
 			affectedMesh->setUniformDrawScale(startKeyFrame.scale.x + delta.x * result);
 		}
 		#pragma endregion
+
 	}
 }
 

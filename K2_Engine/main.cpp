@@ -77,7 +77,9 @@ int main(void)
 
 
 	camera->SetPosition(glm::vec3(0.0f, 400.0f, 200.0f));
- 
+
+#pragma region Rendering The Meshes
+
     cMesh* skyBoxMesh = engine.LoadMesh("Sphere_1_unit_Radius_UV.ply", "skybox");
     skyBoxMesh->isSkyBox = true;
     skyBoxMesh->setUniformDrawScale(5000.0f);
@@ -86,19 +88,21 @@ int main(void)
     milleniumFalcon->bUseDebugColours = true;
 
 
-    cMesh* tieFighter = engine.LoadMesh("Asteroid_3.ply", "tieFighter");
+    cMesh* tieFighter = engine.LoadMesh("TieFighter.ply", "tieFighter");
     tieFighter->bUseDebugColours = true;
 
 
-    cMesh* asteroid1 = engine.LoadMesh("TieFighter.ply", "asteroids");
+    cMesh* asteroid1 = engine.LoadMesh("Asteroid_3.ply", "asteroid1");
     asteroid1->bUseDebugColours = true;
 
-    cMesh* asteroid2 = engine.LoadMesh("Asteroid_3.ply", "tieFighter");
+    cMesh* asteroid2 = engine.LoadMesh("Asteroid_3.ply", "asteroid2");  
     asteroid2->bUseDebugColours = true;
 
 
-    cMesh* asteroid3 = engine.LoadMesh("Asteroid_3.ply", "tieFighter");
+    cMesh* asteroid3 = engine.LoadMesh("Asteroid_3.ply", "asteroid3");
     asteroid3->bUseDebugColours = true;
+
+#pragma endregion
 
 #pragma region Animation System 1
 
@@ -139,14 +143,14 @@ int main(void)
     animTieFighter->mesh = tieFighter;
 
     animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 0.0, EasingType::SineEaseIn));
-    animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 2.0, EasingType::SineEaseIn));
-    animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 4.0, EasingType::SineEaseOut));
-    animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 6.0, EasingType::SineEaseOut));
+    animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 50.0f, -1000.0f), 3.0, EasingType::SineEaseIn));
+    animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, -50.0f, -2000.0f), 5.0, EasingType::SineEaseOut));
+    animTieFighter->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 50.0f, -3000.0f), 7.0, EasingType::SineEaseOut));
 
     animTieFighter->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 0.0f), 0.0, EasingType::SineEaseIn));
-    animTieFighter->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 2.0, EasingType::SineEaseIn));
+    animTieFighter->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(1.6f, 0.0f, 1.6f), 2.0, EasingType::SineEaseIn));
     animTieFighter->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 4.0, EasingType::SineEaseInOut));
-    animTieFighter->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 6.0, EasingType::SineEaseOut));
+    animTieFighter->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(1.6f, 0.0f, 1.6f), 6.0, EasingType::SineEaseOut));
 
     animTieFighter->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 0.0, EasingType::SineEaseIn));
     animTieFighter->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 2.0, EasingType::SineEaseIn));
@@ -171,19 +175,19 @@ int main(void)
     animAsteroid1->name = "Asteroid1";
     animAsteroid1->mesh = asteroid1;
 
-    animAsteroid1->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid1->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, -1000.0f), 2.0, EasingType::SineEaseOut));
-    animAsteroid1->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, -2000.0f), 4.0, EasingType::SineEaseIn));
+    animAsteroid1->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(-300.0f, 0.0f, -700.0f), 0.0, EasingType::SineEaseIn));
+    animAsteroid1->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(-300.0f, 0.0f, -700.0f), 5.0, EasingType::SineEaseOut));
+    animAsteroid1->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(-300.0f, 0.0f, -700.0f), 10.0, EasingType::SineEaseInOut));
 
 
-    animAsteroid1->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 0.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid1->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 2.0, EasingType::SineEaseInOut));
-    animAsteroid1->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 4.0, EasingType::SineEaseInOut));
+    animAsteroid1->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(1.6f, 0.0f, 0.0f), 0.0, EasingType::SineEaseIn));
+    animAsteroid1->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 5.0, EasingType::SineEaseOut));
+    animAsteroid1->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 10.0, EasingType::SineEaseInOut));
 
 
     animAsteroid1->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid1->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 2.0, EasingType::SineEaseInOut));
-    animAsteroid1->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 4.0, EasingType::SineEaseInOut));
+    animAsteroid1->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 5.0, EasingType::SineEaseOut));
+    animAsteroid1->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 10.0, EasingType::SineEaseInOut));
 
 
     animSystem2->AddAnimation(animAsteroid1);
@@ -198,22 +202,22 @@ int main(void)
     animAsteroid2->name = "Asteroid2";
     animAsteroid2->mesh = asteroid2;
 
-    animAsteroid2->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid2->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, -1000.0f), 2.0, EasingType::SineEaseOut));
-    animAsteroid2->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, -2000.0f), 4.0, EasingType::SineEaseIn));
+    animAsteroid2->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(300.0f, 0.0f, -1400.0f), 0.0, EasingType::SineEaseIn));
+    animAsteroid2->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(300.0f, 0.0f, -1400.0f), 5.0, EasingType::SineEaseInOut));
+    animAsteroid2->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(300.0f, 0.0f, -1400.0f), 10.0, EasingType::SineEaseOut));
 
 
     animAsteroid2->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 0.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid2->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 2.0, EasingType::SineEaseInOut));
-    animAsteroid2->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 4.0, EasingType::SineEaseInOut));
+    animAsteroid2->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 5.0, EasingType::SineEaseInOut));
+    animAsteroid2->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 10.0, EasingType::SineEaseOut));
 
 
     animAsteroid2->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid2->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 2.0, EasingType::SineEaseInOut));
-    animAsteroid2->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 4.0, EasingType::SineEaseInOut));
+    animAsteroid2->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 5.0, EasingType::SineEaseInOut));
+    animAsteroid2->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 10.0, EasingType::SineEaseOut));
 
 
-    animSystem2->AddAnimation(animAsteroid1);
+    animSystem2->AddAnimation(animAsteroid2);
 
 
 #pragma endregion
@@ -224,24 +228,24 @@ int main(void)
     Animation* animAsteroid3 = new Animation();
 
     animAsteroid3->name = "Asteroid3";
-    animAsteroid3->mesh = asteroid2;
+    animAsteroid3->mesh = asteroid3;
 
-    animAsteroid3->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, 20.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid3->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, -1000.0f), 2.0, EasingType::SineEaseOut));
-    animAsteroid3->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(0.0f, 0.0f, -2000.0f), 4.0, EasingType::SineEaseIn));
-
-
-    animAsteroid3->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 0.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid3->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 2.0, EasingType::SineEaseInOut));
-    animAsteroid3->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 4.0, EasingType::SineEaseInOut));
+    animAsteroid3->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(-300.0f, 0.0f, -2100.0f), 0.0, EasingType::SineEaseOut));
+    animAsteroid3->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(-300.0f, 0.0f, -2100.0f), 5.0, EasingType::SineEaseIn));
+    animAsteroid3->positionKeyFrames.push_back(PositionKeyFrame(glm::vec3(-300.0f, 0.0f, -2100.0f), 10.0, EasingType::SineEaseInOut));
 
 
-    animAsteroid3->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 0.0, EasingType::SineEaseIn));
-    animAsteroid3->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 2.0, EasingType::SineEaseInOut));
-    animAsteroid3->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 4.0, EasingType::SineEaseInOut));
+    animAsteroid3->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 0.0f), 0.0, EasingType::SineEaseOut));
+    animAsteroid3->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, 1.6f), 5.0, EasingType::SineEaseIn));
+    animAsteroid3->rotationKeyFrames.push_back(RotationKeyFrame(glm::vec3(0.0f, 0.0f, -1.6f), 10.0, EasingType::SineEaseInOut));
 
 
-    animSystem2->AddAnimation(animAsteroid1);
+    animAsteroid3->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(2.0f, 2.0f, 2.0f), 0.0, EasingType::SineEaseOut));
+    animAsteroid3->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 5.0, EasingType::SineEaseIn));
+    animAsteroid3->scaleKeyFrames.push_back(ScaleKeyFrame(glm::vec3(1.0f, 1.0f, 1.0f), 10.0, EasingType::SineEaseInOut));
+
+
+    animSystem2->AddAnimation(animAsteroid3);
 
 #pragma endregion
  
@@ -257,50 +261,60 @@ int main(void)
     while (!glfwWindowShouldClose(engine.window))
     {
         engine.Update();      
- 
-        //glm::vec3 direction = glm::normalize(milleniumFalcon->drawPosition - camera->cameraEye);
-        //glm::vec3 followCamera = (milleniumFalcon->drawPosition + 800.0f);
-        //camera->cameraTarget = direction;
-        //camera->cameraEye = followCamera;
- 
+
+        // Comment this to control the camera with the mouse
+        glm::vec3 direction = glm::normalize(milleniumFalcon->drawPosition - camera->cameraEye);
+        glm::vec3 followCamera = (milleniumFalcon->drawPosition + 800.0f);
+        camera->cameraTarget = direction;
+        camera->cameraEye = followCamera;
+
+        // Pause Key
         if (keyHit == GLFW_KEY_SPACE)
         {
             togglePause = !togglePause;
             keyHit = 0;
         }
 
+        // Speed up 1x
         if (keyHit == GLFW_KEY_1)
         {
             animSystem->animationSpeed = 1.0f;
 			keyHit = 0;
 		}
+        // Speed up 2x
         if (keyHit == GLFW_KEY_2)
         {
 			animSystem->animationSpeed = 2.0f;
             keyHit = 0;
         }
+        // Speed up 3x
         if (keyHit == GLFW_KEY_3)
 		{
             animSystem->animationSpeed = 3.0f;
             keyHit = 0;
         }
+        // Speed up 4x
         if (keyHit == GLFW_KEY_4)
         {
             animSystem->animationSpeed = 4.0f;
             keyHit = 0;
         }
+
+        // Speed up 5x
         if (keyHit == GLFW_KEY_5)
         {
             animSystem->animationSpeed = 5.0f;
             keyHit = 0;
         }
- 
+
+        // Toggle Pause
         if (togglePause)
         {
 			animSystem->Pause();
             animSystem2->Pause();
 
 		}
+        //Toggle Resume
         else
         {
 			animSystem->Resume();         

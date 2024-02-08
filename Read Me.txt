@@ -1,0 +1,23 @@
+Animation Project 1
+
+----------------------------------------------------------------
+Build process
+- Nothing particular to do just build the project
+
+----------------------------------------------------------------
+Controls
+
+
+1,2,3,4,5 To change the animation speed
+Space to Pause/ Play
+R to Reverse
+Left and Right to change the Animation Sequence
+ 
+
+----------------------------------------------------------------
+About this project
+
+- 5 Models have been animated here ( with rotation , position and scale)
+-The animation runs on loop automatically after it starts
+-Models change color after each sort of animation
+-Changing the animation is not working properly but other things are working fine

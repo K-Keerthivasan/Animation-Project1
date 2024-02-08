@@ -4,6 +4,8 @@
 #include <string>
 #include "cMesh.h"
 
+
+// Easing types
 enum class EasingType
 {
 	Linear,
@@ -12,7 +14,7 @@ enum class EasingType
 	SineEaseInOut
 };
 
-
+//Position Keyframes
 struct PositionKeyFrame
 {
 	PositionKeyFrame(const glm::vec3& position, double time, EasingType type = EasingType::Linear)
@@ -26,6 +28,7 @@ struct PositionKeyFrame
 	EasingType easingType;
 };
 
+//Rotation Keyframes
 struct RotationKeyFrame
 {
 	RotationKeyFrame(const glm::vec3& rotation, double time, EasingType type = EasingType::Linear)
@@ -38,6 +41,7 @@ struct RotationKeyFrame
 	EasingType easingType;
 };
 
+// Scale Keyframes
 struct ScaleKeyFrame
 {
 	ScaleKeyFrame(const glm::vec3& scale, double time, EasingType type = EasingType::Linear)
@@ -50,6 +54,8 @@ struct ScaleKeyFrame
 	EasingType easingType;
 };
 
+
+//General Animation Keyframes
 struct Animation
 {
 	std::string name;
